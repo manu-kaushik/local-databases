@@ -1,0 +1,15 @@
+services:
+  db:
+    image: mysql:8
+    container_name: common-mysql-db
+    ports:
+      - "${MYSQL_PORT:-33061}:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_USER: ${MYSQL_USER:-user}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data:
